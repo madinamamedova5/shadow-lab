@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  shadow-node-09:
+    container_name: shadow-node-09
+    image: maddylab/purple-range-victim:v1
+    privileged: true
+    cap_add:
+      - SETUID
+      - SETGID
+      - NET_ADMIN    
+    security_opt:
+      - apparmor:unconfined
+    networks:
+      - purple-network
+    ports:
+      - "8080:80"       
+      - "21:21"         
+      - "2222:22"       
+      - "7000:7000/tcp" 
+      - "8000:8000/tcp" 
+      - "9000:9000/tcp" 
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+networks:
+  purple-network:
+    driver: bridge
