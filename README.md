@@ -12,6 +12,7 @@ docker-compose up -d
 nmap -p- -sV localhost
 
 #Objective
+
 Gain entry.
 
 Escalate privileges.
